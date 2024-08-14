@@ -1,0 +1,22 @@
+create database Bracell;
+
+use Bracell;
+
+create table funcionarios(
+id int not null primary key auto_increment,
+nome varchar(100),
+endereco varchar(130),
+telefone varchar(20),
+celular varchar(20)
+);
+
+insert into funcionarios(nome, endereco, telefone, celular) values("Henryqui Gabriel Benedito Bacellar", "Rua nunca vi, n° 392", "(14)3263-1200", "(14) 9 9708-1590");
+insert into funcionarios(nome, endereco, telefone, celular) values("Arthur cripa", "Rua nunca vi, n° 3292", "(14)32263-1200", "(14) 9 922708-1590");
+
+select * from funcionarios;
+
+update funcionarios set endereco = "Rua Adriano da Gama Kury" where nome = "Arthur cripa"; 
+
+delete from funcionarios where nome = "Arthur cripa";
+
+select * from funcionarios;
