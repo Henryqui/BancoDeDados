@@ -20,3 +20,43 @@ update funcionarios set endereco = "Rua Adriano da Gama Kury" where nome = "Arth
 delete from funcionarios where nome = "Arthur cripa";
 
 select * from funcionarios;
+
+
+create database vendas;
+
+use vendas;
+
+create table produto(
+codigo_produto int not null primary key auto_increment,
+descricao_produto varchar(30),
+preco_produto float
+);
+create table nota_fiscal(
+numero_NF int not null primary key auto_increment,
+data_NF date,
+valor_NF float
+);
+create table itens(
+num_Item int not null,
+qtde_Item int,
+P_codigo_produto int not null,
+NF_numero_NF int not null
+);
+
+alter table itens add constraint PK_itens Primary key(P_codigo_produto, NF_numero_NF);
+
+alter table produto modify column descricao_produto varchar(50);
+alter table nota_fiscal add column icms float after numero_nf;
+alter table produto add column peso float;
+
+alter table itens drop primary key;
+
+alter table itens add constraint PK_itens primary key (num_Item);
+
+select * from produto;
+
+select * from nota_fiscal;
+alter table nota_fiscal change column valor_NF valortotal_nf;
+alter table nota_fiscal drop column data_nf;
+drop table itens;
+rename table nota_fiscal to venda;
