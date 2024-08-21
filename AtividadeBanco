@@ -61,3 +61,54 @@ alter table nota_fiscal change column valor_NF valortotal_nf;
 alter table nota_fiscal drop column data_nf;
 drop table itens;
 rename table nota_fiscal to venda;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////]
+
+create database Escola;
+
+use Escola;
+
+create table aluno(
+id int not null auto_increment primary key,
+nome varchar(120),
+cursoid int not null
+);
+
+create table curso(
+id int not null auto_increment primary key,
+nome varchar(120),
+area varchar(120)
+);
+
+create table matricula(
+id int not null auto_increment primary key,
+alunoid int not null,
+cursoid int not null,
+tipomatricula varchar(120)
+);
+
+
+alter table aluno add constraint FKalunocurso foreign key (cursoid) references curso(id);
+alter table matricula add constraint FKatriculacurso foreign key (cursoid) references curso(id);
+alter table matricula add constraint FKmatriculaluno foreign key (alunoid) references aluno(id);
+
+insert into curso(nome, area) values("Desenvolvimento de Sistemas", "Técnologia da Informação");
+
+insert into curso(nome, area) values("Gerenciamento de Dados", "Técnologia da Informação");
+
+insert into curso(nome, area) values("Ciências da Computação", "Técnologia da Informação");
+
+insert into aluno(nome, cursoid) values("Henryqui G. B. Bacellar", 1);
+
+insert into aluno(nome, cursoid) values("Stravinsky Genebra da Silva", 2);
+
+insert into aluno(nome, cursoid) values("Tarkovsky Otamonaio Kokkusto", 3);
+
+insert into matricula(alunoid, cursoid, tipomatricula) values(1, 1, "Cotista");
+
+insert into matricula(alunoid, cursoid, tipomatricula) values(3, 3, "Bolsista");
+
+SELECT aluno.nome, curso.nome
+FROM matricula
+INNER JOIN aluno ON matricula.alunoid = aluno.id
+INNER JOIN curso ON matricula.cursoid = curso.id;
