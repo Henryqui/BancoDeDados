@@ -1,0 +1,7 @@
+- Inner Join: Apenas as linhas que têm correspondência para ambas as tabelas. Por exemplo, a lista de alunos que têm notas.
+
+- Left Join: Todos os da tabela da esquerda e as correspondências da tabela da direita. Se não houver correspondências, será mostrado vazio para a tabela da direita. Por exemplo, lista de alunos e suas notas, se houver.
+
+- Right Join : Todos os da tabela da direita e as correspondências da tabela da esquerda. Se não houver correspondência, será mostrado nulo para a tabela da esquerda. Por exemplo, lista de todas as notas e os alunos a quem pertencem, se forem.
+
+- Full join: todas das duas tabelas e correspondências onde existirem. Se não houverem correspondências, será mostrado nulo. Por exemplo, a lista de todas os alunos e todas as notas independentemente.
