@@ -112,3 +112,28 @@ SELECT aluno.nome, curso.nome
 FROM matricula
 INNER JOIN aluno ON matricula.alunoid = aluno.id
 INNER JOIN curso ON matricula.cursoid = curso.id;
+
+SELECT aluno.nome AS aluno_nome, curso.nome AS curso_nome
+FROM aluno
+LEFT JOIN matricula ON aluno.id = matricula.alunoid
+LEFT JOIN curso ON matricula.cursoid = curso.id;
+
+
+SELECT curso.nome AS curso_nome, aluno.nome AS aluno_nome
+FROM curso
+RIGHT JOIN matricula ON curso.id = matricula.cursoid
+RIGHT JOIN aluno ON matricula.alunoid = aluno.id;
+
+-- EU TINHA TENTADO FULL JOIN E ISSO AQUI NAO SUPORTA, EU MANDEI PRO GPT E ELE MANDOU ESSA SOLUÇÃO QUE SIMULA UM FULL ( NAO ENTENDI FOI NADA DISSO AQUI)
+
+SELECT aluno.nome AS aluno_nome, curso.nome AS curso_nome
+FROM aluno
+LEFT JOIN matricula ON aluno.id = matricula.alunoid
+LEFT JOIN curso ON matricula.cursoid = curso.id
+
+UNION
+
+SELECT aluno.nome AS aluno_nome, curso.nome AS curso_nome
+FROM curso
+LEFT JOIN matricula ON curso.id = matricula.cursoid
+LEFT JOIN aluno ON matricula.alunoid = aluno.id;
