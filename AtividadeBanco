@@ -137,3 +137,10 @@ SELECT aluno.nome AS aluno_nome, curso.nome AS curso_nome
 FROM curso
 LEFT JOIN matricula ON curso.id = matricula.cursoid
 LEFT JOIN aluno ON matricula.alunoid = aluno.id;
+
+
+-- Eu testei esse algoritmo aqui
+
+select curso.nome, aluno.nome
+from curso
+full join aluno on curso.id = aluno.cursoid;
