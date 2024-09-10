@@ -1,0 +1,98 @@
+create database planos;
+
+use planos;
+
+create table amigos(
+id int not null primary key auto_increment,
+nome varchar(150),
+gastos decimal(4,2),
+idade int,
+endereco varchar(200),
+telefone varchar(19)
+);
+
+create table clientes(
+id int not null primary key auto_increment,
+nome varchar(150),
+cnpj varchar(30),
+endereco varchar(220),
+telefone varchar(19),
+amigoid int not null
+);
+
+create table produtos(
+id int not null,
+lote int not null,
+nome varchar(220),
+clienteid int not null,
+preco decimal(4,2),
+codigoBarra varchar(15),
+taxa varchar(20),
+tipoProduto varchar(40),
+lucro decimal(4,2),
+marca varchar(40),
+
+primary key( lote, id )
+);
+
+alter table produtos add constraint FK_P_C foreign key (clienteid) references clientes(id);
+
+-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// --
+
+
+create table fornecedores(
+codfor int not null auto_increment primary key,
+nome varchar(140),
+fone varchar(30)
+);
+
+create table produto(
+codpro int not null primary key auto_increment,
+codfor int not null,
+produto varchar(120),
+preco decimal(6,4)
+);
+
+alter table produto add constraint FK_P_F foreign key (codfor) references fornecedores(codfor);
+
+insert into fornecedores(nome, fone) values("Biuu GAtis", "(14)99708-1590");
+insert into fornecedores(nome, fone) values("gorge Uashito", "(14)99786-1890");
+
+insert into produto(codfor, produto, preco) values( 1, "Olucos de Tanação", 345.3);
+insert into produto(codfor, produto, preco) values( 2, "Mosuloc mula", 568.3);
+
+-- insert into produto(produto, preco) values("LOba de QueteBAs", 8.33);
+
+create table motorista(
+id int not null primary key,
+cpf varchar(30) not null unique key,
+nome varchar(150),
+placaCaminhao varchar(9)
+);
+
+
+create table logistica(
+id int not null primary key,
+cnpj varchar(30) not null unique key,
+motoristaid int not null,
+cpfmotorista varchar(30) not null unique,
+destino varchar(150) default "Bauru",
+check(destino = "Bauru")
+);
+
+create table terceiros(
+id int not null auto_increment primary key,
+cpfmotorista varchar(30) not null unique,
+motoristaid int not null,
+logisticaid int not null,
+nome varchar(30) default "Bracell",
+check ( nome = "Lwart" )
+);
+
+
+alter table logistica add constraint foreign key (motoristaid) references motorista(id);
+alter table logistica add constraint foreign key (cpfmotorista) references motorista(cpf);
+
+alter table terceiros add constraint FK_motorista_terceiros foreign key (cpfmotorista) references motorista(cpf);
+alter table terceiros add constraint foreign key (motoristaid) references motorista(id);
+alter table terceiros add constraint foreign key (logisticaid) references logistica(id);
