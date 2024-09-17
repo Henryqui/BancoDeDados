@@ -62,6 +62,7 @@ insert into produto(codfor, produto, preco) values( 1, "Olucos de Tanação", 34
 insert into produto(codfor, produto, preco) values( 2, "Mosuloc mula", 568.3);
 
 -- insert into produto(produto, preco) values("LOba de QueteBAs", 8.33);
+-- drop table fornecedores;
 
 create table motorista(
 id int not null primary key,
