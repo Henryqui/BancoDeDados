@@ -96,3 +96,6 @@ alter table logistica add constraint foreign key (cpfmotorista) references motor
 alter table terceiros add constraint FK_motorista_terceiros foreign key (cpfmotorista) references motorista(cpf);
 alter table terceiros add constraint foreign key (motoristaid) references motorista(id);
 alter table terceiros add constraint foreign key (logisticaid) references logistica(id);
+
+
+-- eu fiz primeiro forçando o erro e depois consertei.
