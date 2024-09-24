@@ -1,0 +1,58 @@
+create database Pizzaria;
+
+use Pizzaria;
+
+create table cliente(
+cliente_id int not null auto_increment primary key,
+telefone varchar(15),
+nome varchar(30),
+logradouro varchar(30),
+numero decimal(5,0),
+complemento varchar(30),
+bairro varchar(30),
+referencia varchar(30)
+);
+
+create table pedido(
+pedido_id int auto_increment not null primary key,
+cliente_id int not null,
+data datetime,
+valor decimal(5,2)
+);
+
+alter table pedido add constraint FK_pedido_cliente foreign key (cliente_id) references cliente(cliente_id);
+
+create table pizza(
+pizza_id int not null auto_increment primary key,
+nome varchar(30),
+descricao varchar(30),
+valor decimal(4,2)
+);
+
+create table item_pedido(
+pedido_id int not null,
+pizza_id int not null,
+quantidade decimal(2,0),
+valor decimal(5,2)
+);
+
+alter table item_pedido add constraint FK_itemPedido_Pedido foreign key (pedido_id) references pedido(pedido_id);
+alter table item_pedido add constraint FK_itemPedido_Pizza foreign key (pizza_id) references pizza(pizza_id);
+
+insert into pizza(pizza_id, nome, valor)
+values( "Portuguesa", "aaaaaaaaaaaaa", 15.00);
+
+insert into pizza 
+values(2, "4 Queijos", "bbbbbbbbbbbbbbbb", 25.00);
+
+insert into pizza ( nome	 , valor ) values ( "Provolone",17 );
+insert into pizza ( nome	 , valor ) values ( "Calabresa", 17);
+insert into pizza ( nome ) values ( "Escarola");
+
+insert into cliente values (1, "(11) 1111-1111", "Alexandre Santos", "Rua das Palmeiras", 111, null, "Bela vista", "Em frente a escola" );
+
+select * from pizza;
+
+select pizza_id as codigo, nome, valor as R$ from pizza;
+
+select 10+3, 10-3, 10/3, 10*3;
