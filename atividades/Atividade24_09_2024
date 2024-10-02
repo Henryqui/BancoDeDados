@@ -90,4 +90,24 @@ insert into cliente(nome, telefone, logradouro, numero, bairro) values("Laura Ma
  select * from cliente;
  select * from pedido;
  select * from item_pedido;
+
+
+
+ select * from  pedido order by dataa asc limit 1;
+ 
+ select * from pedido order by dataa desc limit 1;
+ 
+ select * from pedido order by valor desc limit 1;
+ 
+ select max(valor) from pedido;
+ select max(dataa) from pedido;
+ select min(dataa) from pedido;
+ select min(valor) from pedido;
+ select min(nome) from cliente;
+ select max(nome) from cliente;
+ select upper(nome) from cliente;
+ select sum(valor) from pedido where dataa like "2016/12/18%";
+ select 
+ 
+ 
  
