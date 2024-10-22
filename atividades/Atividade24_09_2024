@@ -107,7 +107,9 @@ insert into cliente(nome, telefone, logradouro, numero, bairro) values("Laura Ma
  select max(nome) from cliente;
  select upper(nome) from cliente;
  select sum(valor) from pedido where dataa like "2016/12/18%";
- select 
+
+
+select ip.pizza_id, sum(ip.quantidade), p.nome from item_pedido ip inner join pizza p on ip.pizza_id = p.pizza_id group by pizza_id order by sum(ip.quantidade) desc;
  
  
  
