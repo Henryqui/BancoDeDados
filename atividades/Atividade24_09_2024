@@ -113,3 +113,6 @@ select ip.pizza_id, sum(ip.quantidade), p.nome from item_pedido ip inner join pi
  
  
  
+
+ 
+ select * from pedido as p inner join item_pedido as ip on p.pedido_id = ip.pedido_id inner join cliente as c on c.cliente_id = p.cliente_id;
